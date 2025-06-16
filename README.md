@@ -3,6 +3,6 @@ Sistema de Gestión de estudiantes y cursos en una escuela desarrollado en C#.
 
 [Reglas de negocio](resources/reglas_de_negocio.md)
 
-[DER](DER.png)
+[DER](resources/DER.png)
 
-[DR](DR.png)
+[DR](resources/DR.png)
