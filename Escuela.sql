@@ -35,7 +35,7 @@ CREATE TABLE Docente (
     doc_titulo VARCHAR(50),
     doc_especia VARCHAR(50),
     doc_obsrv TEXT,
-    emp_id INT,
+    emp_id INT UNIQUE,
     FOREIGN KEY (emp_id) REFERENCES Empleado(emp_id)
     ON DELETE CASCADE
     ON UPDATE CASCADE
@@ -98,6 +98,7 @@ CREATE TABLE Matricula (
     matri_id INT PRIMARY KEY IDENTITY(1,1),
     alu_id INT,
     grad_id INT,
+    perd_id INT,
     matri_anio DATE,
     FOREIGN KEY (alu_id) REFERENCES Alumno(alu_id)
     ON DELETE CASCADE
@@ -155,17 +156,176 @@ CREATE TABLE Clase (
 GO
 
 
-CREATE TABLE DetalleMateria (
-    detalle_id INT PRIMARY KEY IDENTITY(1,1),
+CREATE TABLE HistorialMateria (
+    histmat_id INT PRIMARY KEY IDENTITY(1,1),
     mat_id INT,
+    perd_id INT,
     alu_id INT,
-    detalle_notaf DECIMAL(5,2),
-    detalle_obsrv TEXT,
+    clase_id INT,
+    histmat_notaf DECIMAL(5,2),
+    histmat_resul VARCHAR(50),
+    histmat_obsrv TEXT,
     deta_fech DATE,
     FOREIGN KEY (mat_id) REFERENCES Materia(mat_id)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
     FOREIGN KEY (alu_id) REFERENCES Alumno(alu_id)
     ON DELETE CASCADE
-    ON UPDATE CASCADE
+    ON UPDATE CASCADE,
+    FOREIGN KEY (clase_id) REFERENCES Clase(clase_id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
 );
+GO
+
+CREATE TABLE parcial (
+    par_id INT PRIMARY KEY IDENTITY(1,1),
+    histmat_id INT,
+    par_tipo VARCHAR(50),
+    par_fecha DATE,
+    par_nota DECIMAL(5,2),
+    FOREIGN KEY (histmat_id) REFERENCES HistorialMateria(histmat_id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+)
+GO
+
+CREATE TABLE Periodo(
+    perd_id INT PRIMARY KEY IDENTITY(1,1),
+    perd_nom VARCHAR(50) NOT NULL,
+    perd_inicio DATE,
+    perd_final DATE,
+    perd_estado VARCHAR(50)
+)
+GO
+
+ALTER TABLE HistorialMateria
+ADD CONSTRAINT fk_perd_id FOREIGN KEY (perd_id)
+REFERENCES Periodo(perd_id)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+GO
+
+ALTER TABLE Matricula
+ADD CONSTRAINT fk_perd_id FOREIGN KEY (perd_id)
+REFERENCES Periodo(perd_id)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+GO
+
+CREATE TABLE HistorialAcademico(
+    histac_id INT PRIMARY KEY IDENTITY(1,1),
+    perd_id INT,
+    grad_id INT,
+    alu_id INT,
+    histac_resul VARCHAR(50),
+    histac_promed DECIMAL(5,2),
+    FOREIGN KEY (perd_id) REFERENCES Periodo(perd_id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+    FOREIGN KEY (grad_id) REFERENCES Grado(grad_id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+    FOREIGN KEY (alu_id) REFERENCES Alumno(alu_id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+)
+GO
+
+CREATE TABLE Departamento(
+    depart_id INT PRIMARY KEY IDENTITY(1,1),
+    depart_nom VARCHAR(50) NOT NULL,
+    depart_jefe VARCHAR(50),
+    depart_presup DECIMAL
+)
+GO
+
+ALTER TABLE Empleado
+ADD depart_id INT;
+GO
+
+ALTER TABLE Empleado
+ADD CONSTRAINT fk_depart_id FOREIGN KEY (depart_id)
+REFERENCES Departamento(depart_id)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+GO
+
+CREATE TABLE rrhh(
+    rrhh_id INT PRIMARY KEY IDENTITY(1,1),
+    emp_id INT UNIQUE,
+    rrhh_cant_emp INT,
+    rrhh_asigsal bit,
+    FOREIGN KEY (emp_id) REFERENCES Empleado(emp_id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+)
+GO
+
+CREATE TABLE Salario(
+    salar_id INT PRIMARY KEY IDENTITY(1,1),
+    salar_monto DECIMAL,
+    salar_fecha DATE,
+    salar_desc VARCHAR(50),
+    rrhh_id INT,
+    emp_id INT,
+    FOREIGN KEY (rrhh_id) REFERENCES rrhh(rrhh_id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+    FOREIGN KEY (emp_id) REFERENCES Empleado(emp_id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+)
+GO
+
+CREATE TABLE Usuario(
+    usuar_id INT PRIMARY KEY,
+    usuar_pass VARCHAR(50) NOT NULL,
+    usuar_email VARCHAR(50) NOT NULL,
+    usuar_tel VARCHAR(50) NOT NULL
+)
+GO
+
+ALTER TABLE Alumno
+ADD usuar_id INT UNIQUE;
+GO
+
+ALTER TABLE Alumno
+ADD CONSTRAINT fk_usuar_id FOREIGN KEY (usuar_id)
+REFERENCES Usuario(usuar_id)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+GO
+
+ALTER TABLE Apoderado
+ADD usuar_id INT UNIQUE;
+GO
+
+ALTER TABLE Apoderado
+ADD CONSTRAINT fk_usuar_id FOREIGN KEY (usuar_id)
+REFERENCES Usuario(usuar_id)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+GO
+
+ALTER TABLE Empleado
+ADD usuar_id INT UNIQUE;
+GO
+
+ALTER TABLE Empleado 
+ADD CONSTRAINT fk_usuar_id FOREIGN KEY (usuar_id)
+REFERENCES Usuario(usuar_id)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+GO
+
+CREATE TABLE Administrador(
+    admin_id INT PRIMARY KEY IDENTITY(1,1),
+    admin_estad BIT NOT NULL,
+    admin_nivel INT NOT NULL,
+    admin_fecharegis DATE NOT NULL,
+    usuar_id INT UNIQUE NOT NULL,
+    FOREIGN KEY (usuar_id) REFERENCES Usuario(usuar_id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+)
