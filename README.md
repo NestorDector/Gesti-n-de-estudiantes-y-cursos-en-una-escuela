@@ -7,4 +7,6 @@ Sistema de Gestión de estudiantes y cursos en una escuela desarrollado en C#.
 
 [DR](resources/DR.png)   (Al día)
 
-[Script de creación en TSQL](Escuela.sql)   (Al día)
+[Script de creación de base de datos TSQL](Escuela.sql)   (Al día)
+
+[Script de inserción de datos en TSQL](dml_escuela.sql)   (Al día)
