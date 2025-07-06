@@ -1,0 +1,13 @@
+C:\Users\decto\Documents\personal_data\UNAH\2025\II PAC 2025\Lenguaje_de_programacion_3\II_parcial\proyecto\sistema_gestion_escolar\bin\Debug\sistema_gestion_escolar.exe.config
+C:\Users\decto\Documents\personal_data\UNAH\2025\II PAC 2025\Lenguaje_de_programacion_3\II_parcial\proyecto\sistema_gestion_escolar\bin\Debug\sistema_gestion_escolar.exe
+C:\Users\decto\Documents\personal_data\UNAH\2025\II PAC 2025\Lenguaje_de_programacion_3\II_parcial\proyecto\sistema_gestion_escolar\bin\Debug\sistema_gestion_escolar.pdb
+C:\Users\decto\Documents\personal_data\UNAH\2025\II PAC 2025\Lenguaje_de_programacion_3\II_parcial\proyecto\sistema_gestion_escolar\obj\Debug\sistema_gestion_escolar.csproj.AssemblyReference.cache
+C:\Users\decto\Documents\personal_data\UNAH\2025\II PAC 2025\Lenguaje_de_programacion_3\II_parcial\proyecto\sistema_gestion_escolar\obj\Debug\sistema_gestion_escolar.Properties.Resources.resources
+C:\Users\decto\Documents\personal_data\UNAH\2025\II PAC 2025\Lenguaje_de_programacion_3\II_parcial\proyecto\sistema_gestion_escolar\obj\Debug\sistema_gestion_escolar.csproj.GenerateResource.cache
+C:\Users\decto\Documents\personal_data\UNAH\2025\II PAC 2025\Lenguaje_de_programacion_3\II_parcial\proyecto\sistema_gestion_escolar\obj\Debug\sistema_gestion_escolar.csproj.CoreCompileInputs.cache
+C:\Users\decto\Documents\personal_data\UNAH\2025\II PAC 2025\Lenguaje_de_programacion_3\II_parcial\proyecto\sistema_gestion_escolar\obj\Debug\sistema_gestion_escolar.exe
+C:\Users\decto\Documents\personal_data\UNAH\2025\II PAC 2025\Lenguaje_de_programacion_3\II_parcial\proyecto\sistema_gestion_escolar\obj\Debug\sistema_gestion_escolar.pdb
+C:\Users\decto\Documents\personal_data\UNAH\2025\II PAC 2025\Lenguaje_de_programacion_3\II_parcial\proyecto\sistema_gestion_escolar\obj\Debug\sistema_gestion_escolar.exe.config
+C:\Users\decto\Documents\personal_data\UNAH\2025\II PAC 2025\Lenguaje_de_programacion_3\II_parcial\proyecto\sistema_gestion_escolar\obj\Debug\sistema_gestion_escolar.frm_carga.resources
+C:\Users\decto\Documents\personal_data\UNAH\2025\II PAC 2025\Lenguaje_de_programacion_3\II_parcial\proyecto\sistema_gestion_escolar\obj\Debug\sistema_gestion_escolar.frm_login.resources
+C:\Users\decto\Documents\personal_data\UNAH\2025\II PAC 2025\Lenguaje_de_programacion_3\II_parcial\proyecto\sistema_gestion_escolar\obj\Debug\sistema_gestion_escolar.frm_dashboard.resources

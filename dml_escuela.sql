@@ -215,3 +215,7 @@ INSERT INTO HistorialAcademico (perd_id, grad_id, alu_id, histac_resul, histac_p
 (1, 3, 4, 'Aprobado', 85.75), -- Martín en Séptimo Grado en 2024
 (1, 4, 5, 'Reprobado', 68.00), -- Lucia en Octavo Grado en 2024 (Ejemplo)
 (1, 5, 6, 'Aprobado', 91.20); -- Diego en Décimo Grado en 2024
+
+
+
+
